@@ -1,16 +1,16 @@
 <?php
 include "../config/db.php";
-$sql = "SELECT * FROM students";
+$sql = "SELECT * FROM classes";
 $data=$conn->prepare($sql);
 $data->execute();
-$students = $data-> fetchAll();
+$classes = $data-> fetchAll();
 $cnt = 1; 
 ?>
 <!DOCTYPE html>
 <html lang="uz">
 <head>
   <meta charset="UTF-8">
-  <title>Studentlar ro'yxati</title>
+  <title>Classes ro'yxati</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -69,7 +69,6 @@ $cnt = 1;
       border-radius: 10px;
       text-decoration: none;
     }
-
     .delete {
       background: #dc3545;
       color: #fff;
@@ -107,38 +106,29 @@ $cnt = 1;
 
 <div class="container">
   <div class="header">
-    <h2>Studentlar ro'yxati</h2>
-    <a href="create.php" class="btn btn-add">+ Student qo'shish</a>
+    <h2>Classes ro'yxati</h2>
+    <a href="create.php" class="btn btn-add">+ Class qo'shish</a>
   </div>
 
   <table>
     <thead>
       <tr>
-        <th>#</th>
-        <th>Ism</th>
-        <th>Familiya</th>
-        <th>Yosh</th>
-        <th>Sinf</th>
-        <th>Telefon</th>
-        <th>Manzil</th>
-        <th>Amallar</th>
+        <th>id</th>
+        <th>Class_name</th>
+        <th>teacher_id</th>>
+        <th>Amallar</th>>
       </tr>
     </thead>
     <tbody>
-    <?php foreach ($students as $student):?>
-
-
+    <?php foreach ($classes as $class):?>
       <tr>
-        <td> <?= $cnt++ ?></td>
-        <td><?= $student['first_name' ]?></td>
-        <td><?= $student[ 'last_name']?></td>
-        <td><?= $student[ 'age']?></td>
-        <td><?= $student[ 'phone']?></td>
-        <td><?= $student[ 'address']?></td>
+        <td><?= $class['id' ]?></td>
+        <td><?= $class['class_name' ]?></td>
+        <td><?= $class['teacher_id']?></td>
         <td class="actions">
           <a href="#" class="view">Ko'rish</a>
-          <a href="edit.php?id=<?=$student['id']?>" class="edit">Tahrirlash</a>
-          <a href="delete.php?id=<?=$student['id'] ?>" class="delete"
+          <a href="edit.php?id=<?=$class['id']?>" class="edit">Tahrirlash</a>
+          <a href="delete.php?id=<?=$class['id'] ?>" class="dalete"
           onclick="return confirm('O\'chirasizmi!')" >O'chirish</a>
         </td>
       </tr>

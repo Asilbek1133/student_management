@@ -10,9 +10,9 @@ $phone =$_POST['phone'];
 $address= $_POST['address'];
 
 
-$sql = "UPDATE student
+$sql = "UPDATE students
 SET first_name= ?, last_name =?, age =?, class_name =?, phone =? ,address=? 
 WHERE id = ?";
 $data =$conn->prepare($sql);
-$data ->execute([$first_name,$last_name, $age ,$class_name,$phone,$address,$id]);
-header("Location:index.php");
+$data->execute([$first_name,$last_name,$age,$class_name,$phone,$address,$id]);
+header("Location:index.php"); 

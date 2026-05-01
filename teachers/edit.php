@@ -1,10 +1,10 @@
 <?php 
 include "../config/db.php";
 $id = $_GET['id'];
-$sql = "SELECT * FROM students WHERE id =:id";
+$sql = "SELECT * FROM students WHERE id =?";
 $data = $conn->prepare($sql);
 $data ->execute( [$id]);
-$student =$data ->fetch()
+$teacher = $data ->fetch()
 
 
 ?>
@@ -103,38 +103,38 @@ $student =$data ->fetch()
 <body>
 
 <div class="card">
-    <h2>Student qo‘shish</h2>
+    <h2>teacher qo‘shish</h2>
 
     <form action="updete.php" method="POST">
-        <input type="hidden" name="id" value="<?= $student['id'] ?>" id="">
+        <input type="hidden" name="id" value="<?= $teacher['id'] ?>" id="">
         <div class="form-group">
             <label>First Name</label>
-            <input type="text" name="first_name" value="<?= $student['first_name']?>" placeholder="Ism" required>
+            <input type="text" name="first_name" value="<?= $teacher['first_name']?>" placeholder="Ism" required>
         </div>
 
         <div class="form-group">
             <label>Last Name</label>
-            <input type="text" name="last_name"value=" <?=$student[ 'last_name']?>" placeholder="Familiya" required>
+            <input type="text" name="last_name" value="<?=$teacher[ 'last_name']?>" placeholder="Familiya" required>
         </div>
 
         <div class="form-group">
-            <label>Age</label>
-            <input type="number" name="age"value= "<?=$student ['age'] ?>" placeholder="Yoshi" required>
+            <label>subject</label>
+            <input type="text" name="subject" value="<?=$teacher['subject'] ?>" placeholder="Fan" required>
         </div>
 
         <div class="form-group">
             <label>Class Name</label>
-            <input type="text" name="class_name"value="<?= $student['class_name']?>" placeholder="Sinf" required>
+            <input type="text" name="class_name" value="<?= $teacher['Experience']?>" placeholder="Sinf" required>
         </div>
 
         <div class="form-group">
             <label>Phone</label>
-            <input type="text" name="phone"value= "<?= $student['phone']?>" placeholder="+998...">
+            <input type="text" name="phone" value="<?= $teacher['phone']?>" placeholder="+998...">
         </div>
 
         <div class="form-group">
             <label>Address</label>
-            <textarea name="address"  placeholder="Manzil"><?= $student['address']?></textarea>
+            <textarea name="address"  placeholder="Manzil"><?= $teacher['address']?></textarea>
         </div>
 
         <button type="submit" class="btn">Saqlash</button>
